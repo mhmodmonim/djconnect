@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
-from .forms import LoginForm
+from django.contrib.auth.decorators import login_required
+from .forms import LoginForm, UserRegistrationForm
 
 
 def user_login(request):
@@ -18,4 +19,21 @@ def user_login(request):
         else:
             return HttpResponse("Invalid Login Credentials!")
     return render(request, 'accounts/login.html', {'form': form })
+
+def register(request):
+    user_form = UserRegistrationForm(request.POST or None)
+    if user_form.is_valid():
+        new_user = user_form.save(commit=False)
+        new_user.set_password(user_form.cleaned_data['password'])
+        new_user.save()
+        return render(request,'accounts/register_done.html',{'new_user': new_user})
+
+    return  render(request, 'accounts/register.html',{'user_form': user_form})
+
+
+
+@login_required
+def index(request):
+    return render(request, 'accounts/dashboard.html',
+                            {'section': 'dashboard'})
 
