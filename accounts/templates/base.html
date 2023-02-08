@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html LANG="en_us">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static "assets/css/main.css" %}" rel="stylesheet">
+</head>
+<body>
+<div id="header">
+    <span class="logo">Bookmarks</span>
+</div>
+<div id="content">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>
