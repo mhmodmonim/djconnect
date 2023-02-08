@@ -1,0 +1,20 @@
+## IDE ##
+/.idea
+
+## Assets ##
+/static/admin
+/static/django_extensions
+
+### Django ###
+*.log
+*.pot
+__pycache__
+*.pyc
+*.py[co]
+data.json
+
+## DB ##
+db.sqlite3
+
+## env ##
+.env
