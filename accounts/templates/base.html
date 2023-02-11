@@ -5,6 +5,7 @@
     <title>{% block title %}{% endblock %}</title>
     <link href="{% static "assets/css/main.css" %}" rel="stylesheet">
 </head>
+
 <body>
 <div id="header">
     <span class="logo">Bookmarks</span>
@@ -30,6 +31,16 @@
 {% endif %}
 </span>
 </div>
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">
+                {{ message|safe }}
+                <a href="#" class="close">x</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
 <div id="content">
     {% block content %}
     {% endblock %}

@@ -1,9 +1,10 @@
 ## IDE ##
-/.idea
+.idea
 
 ## Assets ##
 /static/admin
 /static/django_extensions
+/media
 
 ### Django ###
 *.log
