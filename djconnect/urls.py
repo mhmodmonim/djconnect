@@ -21,11 +21,17 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('admin/', admin.site.urls),
+    path('images/', include('images.urls', namespace='images')),
+    path('api/', include('api.urls')),
     path('social-auth/',
          include('social_django.urls', namespace='social')),
 
 ]
 
 if settings.DEBUG:
+    import mimetypes
+
+    mimetypes.add_type('application/javascript', '.js', True)
+    mimetypes.add_type('text/css', '.css', True)
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
