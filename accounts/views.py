@@ -112,3 +112,5 @@ def user_follow(request):
             return JsonResponse({'status': 'error'})
 
     return JsonResponse({'status': 'error'})
+
+

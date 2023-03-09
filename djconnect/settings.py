@@ -44,10 +44,12 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'rest_framework',
     'django_extensions',
+    'debug_toolbar',
 
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -146,11 +148,9 @@ SOCIAL_AUTH_PIPELINE = [
     'social_core.pipeline.user.user_details',
 ]
 
-
-ABSOLUTE_URL_OVERRIDES= {
-    'auth.user' : lambda u: reverse_lazy('user_detail', args=[u.username])
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username])
 }
-
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -189,3 +189,12 @@ SOCIAL_AUTH_FACEBOOK_KEY = '554960039909484'  # Facebook App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '84790046d12d29dad616bc3bb87e42c7'  # Facebook App Secret
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '802573209835-q4r0bip81anhl28en9t4shgd9nggpjak.apps.googleusercontent.com'  # Google Client ID
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'  # Google Client Secret
+
+REDIS_HOST = 'localhost'
+REDIS_PORT = '6379'
+REDIS_DB = 0
+
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
